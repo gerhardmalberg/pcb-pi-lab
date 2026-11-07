@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "elmer_version": "26.1",
+  "elmer_commit": "5a8de867068be0568f09af40fb90fee300dfbede",
+  "gmsh_version": "4.12.1",
+  "assets": {
+    "elmer-26.1.tar.gz": {
+      "url": "https://codeload.github.com/ElmerCSC/elmerfem/tar.gz/5a8de867068be0568f09af40fb90fee300dfbede",
+      "sha256": "454bfa6aa1be42ade194a633d4269381e9ab94e959869818dea268c55970fd09"
+    },
+    "cacert.pem": {
+      "url": "https://curl.se/ca/cacert-2026-10-20.pem",
+      "sha256": "796f1389bfea13c0ed78f663b765baaff54a508e5483786bd6ece73c5e3e3cbe"
+    },
+    "ParaView-5.13.3.tar.gz": {
+      "url": "https://www.paraview.org/files/v5.13/ParaView-5.13.3-MPI-Linux-Python3.10-x86_64.tar.gz",
+      "sha256": "2fd7cb3e1155576e3ed56a4a238bdf1b523b7e85611b90f4437c66fb2908ddc8"
+    }
+  },
+  "base_image": "docker.io/library/ubuntu@sha256:24737cef17f4e22b1977df7d9a05e77c4e28b7da5b8911f8d8ccda136bf3573c",
+  "ubuntu_snapshot": "20261027T000000Z",
+  "paraview_version": "5.13.3",
+  "kicad_version": "10.0.7"
+}

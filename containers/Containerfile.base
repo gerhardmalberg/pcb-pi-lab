@@ -1,0 +1,37 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+ARG APT_SNAPSHOT=20261027T000000Z
+ARG BUILD_JOBS=2
+ENV DEBIAN_FRONTEND=noninteractive
+COPY cacert.pem /etc/ssl/certs/ca-certificates.crt
+RUN printf 'APT::Snapshot "%s";\n' "$APT_SNAPSHOT" > /etc/apt/apt.conf.d/50snapshot && \
+    apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates software-properties-common curl unzip build-essential gfortran cmake ninja-build \
+      libopenmpi-dev openmpi-bin libblas-dev liblapack-dev libhypre-dev libmetis-dev \
+      libsuitesparse-dev qtbase5-dev qtscript5-dev libqt5svg5-dev libqt5opengl5-dev libqwt-qt5-dev \
+      python3 python3-numpy python3-scipy python3-shapely python3-matplotlib \
+      python3-gmsh gmsh paraview python3-paraview xvfb xauth libglu1-mesa libgl1-mesa-dri \
+      libxkbcommon-x11-0 libxcb-cursor0 libnss3 libasound2t64 libopengl0 libegl1
+RUN add-apt-repository -y ppa:kicad/kicad-10.0-releases && apt-get update && \
+    apt-get install -y --no-install-recommends kicad=10.0.7~ubuntu24.04.1 \
+      kicad-symbols=10.0.7~ubuntu24.04.1 kicad-footprints=10.0.7~ubuntu24.04.1 \
+      kicad-packages3d=10.0.7~ubuntu24.04.1 && rm -rf /var/lib/apt/lists/*
+COPY elmer.tar.gz /tmp/elmer.tar.gz
+RUN mkdir /opt/elmer-source && tar xzf /tmp/elmer.tar.gz -C /opt/elmer-source --strip-components=1 && \
+    cmake -S /opt/elmer-source -B /opt/elmer-build -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/elmer \
+      -DWITH_MPI=ON -DWITH_OpenMP=ON -DWITH_Hypre=ON -DHypre_INCLUDE_DIR=/usr/include/hypre \
+      -DHypre_LIBRARY=/usr/lib/x86_64-linux-gnu/libHYPRE.so -DWITH_ELMERGUI=ON \
+      -DWITH_CHOLMOD=ON -DCHOLMOD_INCLUDE_DIR=/usr/include/suitesparse \
+      -DCHOLMOD_LIBRARY=/usr/lib/x86_64-linux-gnu/libcholmod.so -DSPQR_LIBRARY=/usr/lib/x86_64-linux-gnu/libspqr.so \
+      -DWITH_QT5=ON -DWITH_QWT=ON -DWITH_VTK=OFF -DWITH_OCC=OFF -DWITH_ELMERPOST=OFF \
+      '-DINCLUDE_ELMER_MODULES=HeatSolve;HeatSolveVec;FluxSolver;SaveData;ResultOutputSolve' \
+      -DBUILD_TESTING=OFF -DHAVE_QP=OFF && \
+    cmake --build /opt/elmer-build --parallel ${BUILD_JOBS} && cmake --install /opt/elmer-build && \
+    mkdir -p /opt/provenance && cp /opt/elmer-build/CMakeCache.txt /opt/provenance/ && \
+    dpkg-query -W > /opt/provenance/apt-packages.txt && rm -rf /opt/elmer-build /tmp/elmer.tar.gz
+ENV PATH=/opt/elmer/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV ELMER_HOME=/opt/elmer
+ENV LD_LIBRARY_PATH=/opt/elmer/lib/elmersolver
+ENTRYPOINT []
+CMD ["ElmerSolver", "-v"]

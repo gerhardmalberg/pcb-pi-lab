@@ -1,0 +1,6 @@
+ARG TOOLS_IMAGE
+FROM ${TOOLS_IMAGE}
+RUN apt-get update && apt-get install -y --no-install-recommends ngspice=42+ds-3build1 && rm -rf /var/lib/apt/lists/*
+ENV PYTHONDONTWRITEBYTECODE=1 MPLBACKEND=Agg
+ENTRYPOINT []
+CMD ["python3", "-m", "pcb_pi.worker"]

@@ -1,0 +1,5 @@
+ARG CPU_IMAGE
+FROM ${CPU_IMAGE}
+COPY paraview.tar.gz /tmp/paraview.tar.gz
+RUN mkdir /opt/paraview && tar xzf /tmp/paraview.tar.gz -C /opt/paraview --strip-components=1 && rm /tmp/paraview.tar.gz
+ENV PATH=/opt/paraview/bin:/opt/elmer/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

@@ -1,0 +1,6 @@
+{
+  "image": "localhost/pcb-pi-cpu:0.1",
+  "reuse_tools_image": "e14d72664ba53fc4fb77a7296051bcd6447c0d90104cb7ee93a339c35a382e5d",
+  "ngspice_package": "42+ds-3build1",
+  "elmer_commit": "5a8de867068be0568f09af40fb90fee300dfbede"
+}

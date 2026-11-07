@@ -1,0 +1,553 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-11-07T00:52:49.417822+00:00",
+  "runtime": {
+    "tools": {
+      "ElmerSolver": "/opt/elmer/bin/ElmerSolver",
+      "elmerf90": "/opt/elmer/bin/elmerf90",
+      "ngspice": "/usr/bin/ngspice",
+      "pvpython": "/opt/paraview/bin/pvpython"
+    },
+    "kicad": "10.0.7-10.0.7~ubuntu24.04.1",
+    "gmsh": "4.12.1",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "shapely": "2.0.3",
+    "cpu": true,
+    "cuda": false,
+    "image_id": "944866772512220b895da3bb49d74a42d430534531f0375c7bfd43e148cc749f",
+    "ngspice_package": "42+ds-3build1",
+    "elmer_commit": "5a8de867068be0568f09af40fb90fee300dfbede",
+    "elmer_version": "26.1",
+    "paraview_version": "5.13.3",
+    "validation": "Installed-image build, imports, native module loading and numerical tests verified. Full from-scratch build not executed."
+  },
+  "implementation_sha256": {
+    "src/pcb_pi/mesh.py": "3dd6592bb5de520aa7e4a5b87f482c9db41fccf8de4f2061fc32b974db3891c1",
+    "src/pcb_pi/circuit.py": "7f6cb7b504400e983e6915461526c2c62ca436b44533698ec6cbaa2c5277233a",
+    "src/pcb_pi/config.py": "e75242f748d37290b4ccad1f157333cf63ce794c3b2d6c41c97d52caab61f625",
+    "src/pcb_pi/pipeline.py": "e603626e7f06af41fca192c4330a966af378b835b60bc4ab4ce329f4b0cecfa9",
+    "src/pcb_pi/extract.py": "9c05ecfa76e380e0ec4ee7f7dcb3c9ce1f43213064814e55bfd4cf7022a21227",
+    "src/pcb_pi/common.py": "75b65661786542e2b527e2430da892c7d33a0faaf54a8ce6908551fc58fdf9d6",
+    "src/pcb_pi/cli.py": "315ef5571eb6425f9ae6bfd77b9828124dea3c9116a5221ea25196c1cbc93639",
+    "src/pcb_pi/__init__.py": "a8cc17efcfeed581d8b186dad3afdcc65b3721a8f8affb661b1d63d13b0a1153",
+    "src/pcb_pi/PiFields.F90": "7902285cbbd982b2aa27815e444e093c3605222e988e8aaaf45788f2f2db8be0",
+    "src/pcb_pi/report.py": "047c308087b999617983e3ca7dc12f9190a482fb967310de331782ace097bf42",
+    "src/pcb_pi/fem.py": "0781ffe861b48e9e8053d019f845c96cba4471d25c7a49914d2c933bd757f1dd",
+    "src/pcb_pi/worker.py": "78954cbffaa278852ef74756d1dce344a437aae4bdde30a139d73c5e51c21a5d"
+  },
+  "validation_sources_sha256": {
+    "tests/helpers.py": "f2bf6d0b84d7a4f90cc6673235707fbf180fb015dca92ce390c34b9774e32f61",
+    "tests/test_unit.py": "c6ee911003ddf35923e7c9a34dd1d150e018301e28f360f5a627badcfc97fe58",
+    "tests/test_integration.py": "8f09145db14059303af04c5a5e6fd67eee4bd932b2921c7156ec0491f474895e",
+    "scripts/generate-example.py": "896047c4e7cf49edc358c29a749f969706b447da0b349416f9ea2f1238e74281",
+    "scripts/build.py": "22aa02d162ceb09e2b7cfdb3c3bff7ce465d11040175c3c9164a2ad5893ca698",
+    "scripts/verify-convergence.py": "56ec4f6348e5d27f6e3cfa3abdf7203c1679b6516ff210689d1affc4d8c2ee5b"
+  },
+  "board_sha256": "1c014fdf6ac0063875bd769ad4ed7efb2a5ec1f10d0553846711844cb247087b",
+  "case_sha256": "cafdf0eac27217f204bbcf1450c7aa020960f014d0fb4651f6526ca184dd933a",
+  "tests": {
+    "passed": true,
+    "count": 45,
+    "log_sha256": "d8cd95e98c1f59800aed36d184c77924a41f76911af0f60a78990f68ddf041fc",
+    "native": {
+      "fixed_coupling": {
+        "copper_losses_w": [
+          0.0009999999999999926,
+          0.0009999999999999926
+        ],
+        "maximum_temperatures_c": [
+          32.50000000000199,
+          32.50000000000199
+        ],
+        "expected_maximum_c": 32.5
+      },
+      "fixed_conductivity": {
+        "temperature_c": 32.49999999999932,
+        "expected_c": 32.5,
+        "balance": {
+          "input_w": 0.0010000000000000054,
+          "removed_w": 0.0009999999999999614,
+          "imbalance_relative": 4.401860820291124e-14,
+          "maximum_temperature_c": 32.49999999999932
+        },
+        "explicit_extra_heat_w": 0.000999999999999989
+      },
+      "heated_conductor": {
+        "relative_temperature_rise_error": 0.00023180867695817947,
+        "maximum_temperature_c": 33.94623293671111,
+        "expected_maximum_c": 33.949392732454925,
+        "iterations": 21,
+        "heat_imbalance": 5.188336130827855e-13
+      },
+      "parallel": {
+        "current_ratio": 1.9999999999999967,
+        "expected_ratio": 2.0,
+        "equivalent_resistance_ohm": 0.0005746666666666155
+      },
+      "barrel": {
+        "expected_ohm": 0.0005164858764996284,
+        "computed_ohm": 0.0005168548044494447,
+        "relative_error": 0.0007143040431554226
+      },
+      "trace": {
+        "expected_ohm": 0.001724,
+        "computed_ohm": 0.0017240000000002015,
+        "relative_error": 1.1679546219056647e-13,
+        "power_imbalance": 1.201175260700294e-13
+      },
+      "uniform_temperature": {
+        "expected_ohm": 0.0020627659999999997,
+        "computed_ohm": 0.0020627660000000114,
+        "zero_load_loss_w": 2.4733905310277034e-21,
+        "zero_heat_temperature_error_c": 1.7928698525793152e-08
+      }
+    },
+    "circuit": {
+      "ac_rlc": {
+        "maximum_relative_complex_error": 2.170404638415641e-15
+      },
+      "antiresonance": {
+        "maximum_relative_error": 2.8244758855504234e-14,
+        "expected_limit_failure": true
+      },
+      "dc": {
+        "load_v": 3.292000000000001,
+        "expected_v": 3.292,
+        "return_rise_v": 0.002
+      },
+      "finite_edge_step": {
+        "maximum_error_relative_to_voltage_excursion": 7.055558304269738e-06,
+        "final_voltage_v": 3.276,
+        "settling_s": 4.310139087822e-07
+      },
+      "multi_terminal": {
+        "load_voltages_v": {
+          "load1": 3.2889999999999993,
+          "load2": 3.2799999999999994
+        },
+        "transfer_impedance_ohm": 0.009999999999999997
+      },
+      "rc_transient": {
+        "maximum_error_relative_to_load_step_droop": 7.0555583320253135e-06
+      },
+      "rlc_transient": {
+        "maximum_error_relative_to_voltage_excursion": 1.6400636787645972e-05
+      }
+    }
+  },
+  "synthetic_pdn": {
+    "output": "results/refinement/0.1875",
+    "mesh_scale": 0.1875,
+    "checks": {
+      "dc": {
+        "solver_completed": true,
+        "numerically_valid": true,
+        "design_limits_passed": true
+      },
+      "electrothermal": {
+        "solver_completed": true,
+        "numerically_valid": true,
+        "design_limits_passed": true
+      },
+      "ac": {
+        "solver_completed": true,
+        "numerically_valid": true,
+        "design_limits_passed": true
+      },
+      "transient": {
+        "solver_completed": true,
+        "numerically_valid": true,
+        "design_limits_passed": true
+      }
+    },
+    "dc": {
+      "copper_loss_w": 0.16351314050452664,
+      "terminal_currents_a": {
+        "src_p": 2.0000000000004854,
+        "src_n": -2.000000000000001,
+        "load1_p": -1.2000000000000028,
+        "load1_n": 1.1999999999999995,
+        "load2_p": -0.7999999999997272,
+        "load2_n": 0.7999999999999989,
+        "cap1_p": 5.684341886080802e-14,
+        "cap1_n": 1.1102230246251565e-16,
+        "cap2_p": 4.547473508864641e-13,
+        "cap2_n": 0.0
+      },
+      "power_imbalance_relative": 2.2983673864595192e-11,
+      "current_imbalance_relative": 3.1616376183760023e-13,
+      "maximum_current_density_a_m2": 461830155.2252231,
+      "operating_point_loss_equivalent_resistance_ohm": 0.04087828512613166,
+      "load_voltages_v": {
+        "load1": 3.19483662922808,
+        "load2": 3.2033536305370407
+      },
+      "terminal_voltages_v": {
+        "src_p": 3.279999999999996,
+        "src_n": 0.0,
+        "load1_p": 3.2102912909410946,
+        "load1_n": 0.01545466171301453,
+        "load2_p": 3.2157029317719625,
+        "load2_n": 0.01234930123492179,
+        "cap1_p": 3.212376626438238,
+        "cap1_n": 0.013600519362874297,
+        "cap2_p": 3.2150927947238124,
+        "cap2_n": 0.012451919383236702
+      },
+      "path_drops": {
+        "load1": {
+          "supply_drop_v": 0.06970870905890125,
+          "return_rise_v": 0.01545466171301453
+        },
+        "load2": {
+          "supply_drop_v": 0.06429706822803327,
+          "return_rise_v": 0.01234930123492179
+        }
+      },
+      "temperature_min_c": 25.0,
+      "temperature_max_c": 25.0,
+      "design_limits_passed": true
+    },
+    "electrothermal": {
+      "iteration_directory": "iteration-014",
+      "electrical": {
+        "copper_loss_w": 0.2033613277754117,
+        "terminal_currents_a": {
+          "src_p": 1.9999999999993021,
+          "src_n": -1.9999999999999982,
+          "load1_p": -1.1999999999997755,
+          "load1_n": 1.199999999999999,
+          "load2_p": -0.7999999999999545,
+          "load2_n": 0.7999999999999994,
+          "cap1_p": 8.526512829121202e-14,
+          "cap1_n": 5.551115123125783e-16,
+          "cap2_p": 0.0,
+          "cap2_n": 0.0
+        },
+        "power_imbalance_relative": 7.951123427509776e-11,
+        "current_imbalance_relative": 8.545941732053088e-14,
+        "maximum_current_density_a_m2": 463162879.8400752,
+        "operating_point_loss_equivalent_resistance_ohm": 0.05084033194385292,
+        "load_voltages_v": {
+          "load1": 3.174478188233819,
+          "load2": 3.1840810579487906
+        },
+        "terminal_voltages_v": {
+          "src_p": 3.280000000000006,
+          "src_n": 0.0,
+          "load1_p": 3.191806892313761,
+          "load1_n": 0.01732870407994208,
+          "load2_p": 3.197971668790426,
+          "load2_n": 0.013890610841635304,
+          "cap1_p": 3.194166641185629,
+          "cap1_n": 0.015278964806628803,
+          "cap2_p": 3.1972687344314177,
+          "cap2_n": 0.014004365048333973
+        },
+        "path_drops": {
+          "load1": {
+            "supply_drop_v": 0.08819310768624522,
+            "return_rise_v": 0.01732870407994208
+          },
+          "load2": {
+            "supply_drop_v": 0.08202833120957997,
+            "return_rise_v": 0.013890610841635304
+          }
+        },
+        "temperature_min_c": 48.467498195288066,
+        "temperature_max_c": 106.17517606987894,
+        "design_limits_passed": true
+      },
+      "thermal": {
+        "input_w": 0.20336132777541044,
+        "removed_w": 0.20336130224632715,
+        "imbalance_relative": 1.2553558521205406e-07,
+        "maximum_temperature_c": 106.23404814290467
+      },
+      "temperature_mismatch_c": 0.05891494129508601,
+      "iterations": 15
+    },
+    "ac": {
+      "baseline": {
+        "load1": {
+          "maximum_impedance_ohm": 0.2266995074224908,
+          "worst_ratio": 0.9067980296899631,
+          "worst_frequency_hz": 9999999.999999998,
+          "within_target": true
+        },
+        "load2": {
+          "maximum_impedance_ohm": 0.22684079624999254,
+          "worst_ratio": 0.9073631849999702,
+          "worst_frequency_hz": 9999999.999999998,
+          "within_target": true
+        }
+      },
+      "alternative": {
+        "load1": {
+          "maximum_impedance_ohm": 0.14084053695021378,
+          "worst_ratio": 0.5633621478008551,
+          "worst_frequency_hz": 9999999.999999998,
+          "within_target": true
+        },
+        "load2": {
+          "maximum_impedance_ohm": 0.14022221911490243,
+          "worst_ratio": 0.5608888764596097,
+          "worst_frequency_hz": 9999999.999999998,
+          "within_target": true
+        }
+      }
+    },
+    "transient": {
+      "baseline": {
+        "loads": {
+          "load1": {
+            "baseline_v": 3.1744781882337856,
+            "minimum_v": 3.1479457317325807,
+            "maximum_v": 3.174556528610002,
+            "droop_v": 0.026532456501204837,
+            "overshoot_v": 7.834037621634593e-05,
+            "settling_s": 6.286993199999065e-07,
+            "settling_target_v": 3.1744781882337856,
+            "recovery_window_sufficient": true,
+            "within_limits": true
+          },
+          "load2": {
+            "baseline_v": 3.1840810579487564,
+            "minimum_v": 3.160916851727504,
+            "maximum_v": 3.1841655334937395,
+            "droop_v": 0.02316420622125248,
+            "overshoot_v": 8.447554498314247e-05,
+            "settling_s": 5.509309518560363e-07,
+            "settling_target_v": 3.1840810579487564,
+            "recovery_window_sufficient": true,
+            "within_limits": true
+          }
+        },
+        "timestep_verification": {
+          "load1": {
+            "relative_changes": {
+              "droop_v": 1.790745736864984e-08,
+              "overshoot_v": 1.725798988836526e-05,
+              "settling_s": 7.656468219969644e-05
+            },
+            "passed": true
+          },
+          "load2": {
+            "relative_changes": {
+              "droop_v": 8.353534239131432e-09,
+              "overshoot_v": 1.7495709949641753e-05,
+              "settling_s": 7.937065276169654e-05
+            },
+            "passed": true
+          }
+        }
+      },
+      "alternative": {
+        "loads": {
+          "load1": {
+            "baseline_v": 3.174478188233804,
+            "minimum_v": 3.14797407629825,
+            "maximum_v": 3.174528184009382,
+            "droop_v": 0.026504111935553798,
+            "overshoot_v": 4.999577557818213e-05,
+            "settling_s": 7.303084523042273e-07,
+            "settling_target_v": 3.174478188233804,
+            "recovery_window_sufficient": true,
+            "within_limits": true
+          },
+          "load2": {
+            "baseline_v": 3.1840810579487764,
+            "minimum_v": 3.160947696256145,
+            "maximum_v": 3.1841346884446593,
+            "droop_v": 0.02313336169263147,
+            "overshoot_v": 5.363049588291702e-05,
+            "settling_s": 6.526272493542838e-07,
+            "settling_target_v": 3.1840810579487764,
+            "recovery_window_sufficient": true,
+            "within_limits": true
+          }
+        },
+        "timestep_verification": {
+          "load1": {
+            "relative_changes": {
+              "droop_v": 5.982712937128105e-10,
+              "overshoot_v": 4.131355002604659e-06,
+              "settling_s": 1.1209394714878474e-06
+            },
+            "passed": true
+          },
+          "load2": {
+            "relative_changes": {
+              "droop_v": 4.958525080840681e-09,
+              "overshoot_v": 1.1010308578975059e-06,
+              "settling_s": 3.5336168030516473e-07
+            },
+            "passed": true
+          }
+        }
+      }
+    },
+    "global_circuit_audit": {
+      "cold": {
+        "source_power_w": 6.6,
+        "load_power_w": 6.396486859503328,
+        "source_resistor_loss_w": 0.04,
+        "copper_loss_w": 0.16351314050452664,
+        "global_power_imbalance_relative": 1.19021375247135e-12,
+        "maximum_terminal_kcl_residual_a": 4.853895063661184e-13
+      },
+      "heated": {
+        "source_power_w": 6.6,
+        "load_power_w": 6.356638672239615,
+        "source_resistor_loss_w": 0.04,
+        "copper_loss_w": 0.2033613277754117,
+        "global_power_imbalance_relative": 2.2768739755549356e-12,
+        "maximum_terminal_kcl_residual_a": 6.978861932793734e-13
+      }
+    },
+    "native_module": {
+      "source_sha256": "31167bd6615a7e72a31f17845ffb0876606906e9858bda06d4e5b49a40e477bb",
+      "coefficient_source_sha256": "7902285cbbd982b2aa27815e444e093c3605222e988e8aaaf45788f2f2db8be0",
+      "image_id": "944866772512220b895da3bb49d74a42d430534531f0375c7bfd43e148cc749f",
+      "binary_sha256": "ecd7198a9972547a5abf3ac3c416d00800b1503891be5fbf71a098659b2da44a",
+      "coefficient_binary_sha256": "fbb6b9825cfb81e0362e85419ccc96872a794ab26d318b82f7bfa4f3d527d920",
+      "upstream": "Elmer 26.1",
+      "license": "Static-current module LGPL-2.1-or-later; PiFields Apache-2.0"
+    },
+    "source_and_artifacts_verified": {
+      "artifact_hashes_passed": true,
+      "source_hash_passed": true,
+      "stages": [
+        "native",
+        "extract",
+        "mesh",
+        "fields",
+        "dc",
+        "electrothermal",
+        "ac",
+        "transient"
+      ],
+      "mesh_convergence": "Run scripts/verify-convergence.py separately; not inferred from solver success"
+    }
+  },
+  "mesh_refinement": {
+    "board_sha256": "1c014fdf6ac0063875bd769ad4ed7efb2a5ec1f10d0553846711844cb247087b",
+    "case_sha256": "cafdf0eac27217f204bbcf1450c7aa020960f014d0fb4651f6526ca184dd933a",
+    "records": [
+      {
+        "scale": 1.0,
+        "output": "results/examples/synthetic-pdn",
+        "metrics": {
+          "copper_loss_w": 0.19712393158335698,
+          "temperature_rise_c": 70.98063096250308,
+          "load1_pcb_drop_v": 0.10222734370997262,
+          "load2_pcb_drop_v": 0.09306389891337023
+        },
+        "final_sha256": "03ab3db054b55df8f70522818fa6ba5265a53e40254e923eac7d13f3fa8ead3d",
+        "mesh": {
+          "nodes": 14378,
+          "tetrahedra": 61272,
+          "electrical_tetrahedra": 47520,
+          "volume_m3": 2.4772933689642946e-07,
+          "minimum_tetrahedron_volume_m3": 2.0718891878382322e-16,
+          "units": "m",
+          "construction": "Conformal Gmsh planar mesh with three tetrahedra per swept prism",
+          "electrical_components": 2
+        }
+      },
+      {
+        "scale": 0.25,
+        "output": "results/refinement/0.25",
+        "metrics": {
+          "copper_loss_w": 0.202649482804497,
+          "temperature_rise_c": 79.94522302417329,
+          "load1_pcb_drop_v": 0.10514569299494256,
+          "load2_pcb_drop_v": 0.09559331401277098
+        },
+        "final_sha256": "c7298b1979f9d03459c3d20952672d4bbda84d2130a14bea3c50a489cd96d566",
+        "mesh": {
+          "nodes": 104300,
+          "tetrahedra": 540864,
+          "electrical_tetrahedra": 220824,
+          "volume_m3": 2.477293368964294e-07,
+          "minimum_tetrahedron_volume_m3": 4.520686109934891e-17,
+          "units": "m",
+          "construction": "Conformal Gmsh planar mesh with three tetrahedra per swept prism",
+          "electrical_components": 2
+        }
+      },
+      {
+        "scale": 0.1875,
+        "output": "results/refinement/0.1875",
+        "metrics": {
+          "copper_loss_w": 0.2033613277754117,
+          "temperature_rise_c": 81.23404814290467,
+          "load1_pcb_drop_v": 0.1055218117661873,
+          "load2_pcb_drop_v": 0.09591894205121528
+        },
+        "final_sha256": "e208b9560eb54c16277ae83449ef3fd3277d0632a3f47acfe6c8f10b15691561",
+        "mesh": {
+          "nodes": 198322,
+          "tetrahedra": 1066824,
+          "electrical_tetrahedra": 329967,
+          "volume_m3": 2.47729336896429e-07,
+          "minimum_tetrahedron_volume_m3": 3.4020388786135925e-17,
+          "units": "m",
+          "construction": "Conformal Gmsh planar mesh with three tetrahedra per swept prism",
+          "electrical_components": 2
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "from": 1.0,
+        "to": 0.25,
+        "relative_changes": {
+          "copper_loss_w": 0.02726654489649354,
+          "temperature_rise_c": 0.11213418041199974,
+          "load1_pcb_drop_v": 0.02775529079550893,
+          "load2_pcb_drop_v": 0.026460167486847694
+        },
+        "passed": false
+      },
+      {
+        "from": 0.25,
+        "to": 0.1875,
+        "relative_changes": {
+          "copper_loss_w": 0.0035003949802139707,
+          "temperature_rise_c": 0.01586557789738751,
+          "load1_pcb_drop_v": 0.003564369915085786,
+          "load2_pcb_drop_v": 0.003394825166758312
+        },
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "accepted_output": "results/refinement/0.1875",
+    "criterion": ".02 relative change in final refinement; at least three meshes"
+  },
+  "standalone_checkout": {
+    "passed": true,
+    "unit_tests": 22,
+    "dc_completed": true,
+    "source_and_artifacts_verified": true,
+    "corrupted_report_rejected": true,
+    "restored_report_verified": true,
+    "matching_input_and_implementation_key": "4d2d78e7549bab5eef13ce4596f79fda99a6130072e794e09a65ef85b5bba33a",
+    "image_id": "944866772512220b895da3bb49d74a42d430534531f0375c7bfd43e148cc749f",
+    "isolation": "Copy in a separate temporary directory; only its own source, project and output directories mounted; no sibling repositories or previous results copied."
+  },
+  "preservation": {
+    "pre_existing_tracked_files_checked": 768,
+    "changes_outside_this_task_observed": 2,
+    "scope": "This task writes only the new lab. All baseline files in the existing hardware and PCB simulation laboratories remained unchanged; concurrent work in a separate project was left untouched."
+  },
+  "free_disk_gib": 80.6778335571289,
+  "limitations": [
+    "No full from-scratch container rebuild performed.",
+    "Synthetic numerical verification only; no hardware correlation.",
+    "CPU only; AC parasitics are declared circuit models; transient temperature is fixed.",
+    "Qucs-S inspection is optional and was not exercised."
+  ]
+}

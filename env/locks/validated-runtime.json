@@ -1,0 +1,21 @@
+{
+  "tools": {
+    "ElmerSolver": "/opt/elmer/bin/ElmerSolver",
+    "elmerf90": "/opt/elmer/bin/elmerf90",
+    "ngspice": "/usr/bin/ngspice",
+    "pvpython": "/opt/paraview/bin/pvpython"
+  },
+  "kicad": "10.0.7-10.0.7~ubuntu24.04.1",
+  "gmsh": "4.12.1",
+  "numpy": "1.26.4",
+  "scipy": "1.11.4",
+  "shapely": "2.0.3",
+  "cpu": true,
+  "cuda": false,
+  "image_id": "944866772512220b895da3bb49d74a42d430534531f0375c7bfd43e148cc749f",
+  "ngspice_package": "42+ds-3build1",
+  "elmer_commit": "5a8de867068be0568f09af40fb90fee300dfbede",
+  "elmer_version": "26.1",
+  "paraview_version": "5.13.3",
+  "validation": "Installed-image build, imports, native module loading and numerical tests verified. Full from-scratch build not executed."
+}

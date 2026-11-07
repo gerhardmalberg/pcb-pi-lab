@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pcb-pi-lab"
+version = "0.1.0"
+description = "Standalone PCB DC, circuit PDN and steady electrothermal analysis"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+dependencies = []
+
+[project.scripts]
+pcb-pi = "pcb_pi.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pcb_pi = ["*.F90"]

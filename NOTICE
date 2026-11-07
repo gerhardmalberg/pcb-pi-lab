@@ -1,0 +1,12 @@
+PCB Power Integrity Lab
+Copyright 2026 Gerhard Malberg
+
+Original software, documentation and synthetic examples are Apache-2.0.
+KiCad extraction and container recipes are adapted from PCB Thermal Lab;
+runtime and provenance patterns are adapted from PCB EM Lab and PCB Thermal
+Lab, Copyright 2026 Gerhard Malberg, Apache-2.0. No sibling checkout is required.
+
+Elmer, KiCad, Gmsh, ngspice, ParaView and other third-party applications retain
+their licenses. Elmer solver modules compiled from bundled upstream sources
+retain their LGPL notices. Input designs and external models retain their own
+licenses. Environment sources and pins are recorded under env/.

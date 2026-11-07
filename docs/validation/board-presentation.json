@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "purpose": "Presentation-only update of the validated synthetic board; no numerical solver rerun.",
+  "board": "examples/synthetic-pdn/board.kicad_pcb",
+  "board_sha256": "867e12f763f963bff0da5309e6db979a20463384990d25d121781388ba6dcc49",
+  "pre_edit_board_sha256": "9d09c2c376a640adbfd459a253b1d779dc24d31409e857039e79d3e97f57a377",
+  "original_validation_board_sha256": "1c014fdf6ac0063875bd769ad4ed7efb2a5ec1f10d0553846711844cb247087b",
+  "case_sha256": "cafdf0eac27217f204bbcf1450c7aa020960f014d0fb4651f6526ca184dd933a",
+  "translation_mm": [
+    138.5,
+    99.0
+  ],
+  "page": "A4 landscape",
+  "board_center_mm": [
+    148.5,
+    105.0
+  ],
+  "auxiliary_and_grid_origin_mm": [
+    138.5,
+    99.0
+  ],
+  "silkscreen": "Visible 0.9 mm reference labels with 0.15 mm strokes; U2 reference shifted 1.5 mm left; fabrication values hidden, their stored values unchanged.",
+  "checks": {
+    "current_before_after_extraction_equal_after_inverse_translation": true,
+    "historical_modeled_geometry_equivalent": true,
+    "unchanged_case_and_solver_implementation": true,
+    "generator_geometry_and_labels_match": true,
+    "drc_violations": 0,
+    "unconnected_items": 0,
+    "front_plot_visually_reviewed": true
+  },
+  "geometry": {
+    "copper_items": 32,
+    "plated_holes": 7,
+    "components": 5
+  },
+  "comparison": "All extracted pre-edit and post-edit properties match exactly after inverse translation, rounding XY to KiCad resolution (0.000001 mm), and excluding the source-file hash. No copper refill was performed.",
+  "historical_comparison": "Original validation extraction also matches after inverse translation and ignoring file hash, KiCad patch-version metadata, and the dielectric loss tangent. Before this edit, a KiCad save had already changed the saved dielectric loss tangent from 0 to 0.02. That parameter is not consumed by this DC-resistance/steady-thermal model or its explicit lumped AC circuit.",
+  "historical_result_publications_verified_unchanged": [
+    "results/examples/synthetic-pdn",
+    "results/refinement/0.25",
+    "results/refinement/0.1875"
+  ],
+  "cache_behavior": "The existing cache and verify commands use the complete board-file hash. The new presentation file does not match the historical run identity; verify rejects that identity and a new run recomputes its stages. Geometry equivalence is recorded separately and does not bypass those checks.",
+  "solver_runs_performed": false
+}

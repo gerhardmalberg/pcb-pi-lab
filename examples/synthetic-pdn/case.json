@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "name": "Synthetic two-load PDN",
+  "board": "board.kicad_pcb",
+  "project_root": ".",
+  "output": "../../results/examples/synthetic-pdn",
+  "nets": {
+    "supply": "SUPPLY",
+    "return": "RETURN"
+  },
+  "terminals": {
+    "src_p": {
+      "ref": "J1",
+      "pad": "1",
+      "net": "SUPPLY",
+      "layer": "F.Cu"
+    },
+    "src_n": {
+      "ref": "J1",
+      "pad": "2",
+      "net": "RETURN",
+      "layer": "F.Cu"
+    },
+    "load1_p": {
+      "ref": "U1",
+      "pad": "1",
+      "net": "SUPPLY",
+      "layer": "F.Cu"
+    },
+    "load1_n": {
+      "ref": "U1",
+      "pad": "2",
+      "net": "RETURN",
+      "layer": "F.Cu"
+    },
+    "load2_p": {
+      "ref": "U2",
+      "pad": "1",
+      "net": "SUPPLY",
+      "layer": "F.Cu"
+    },
+    "load2_n": {
+      "ref": "U2",
+      "pad": "2",
+      "net": "RETURN",
+      "layer": "F.Cu"
+    },
+    "cap1_p": {
+      "ref": "C1",
+      "pad": "1",
+      "net": "SUPPLY",
+      "layer": "F.Cu"
+    },
+    "cap1_n": {
+      "ref": "C1",
+      "pad": "2",
+      "net": "RETURN",
+      "layer": "F.Cu"
+    },
+    "cap2_p": {
+      "ref": "C2",
+      "pad": "1",
+      "net": "SUPPLY",
+      "layer": "F.Cu"
+    },
+    "cap2_n": {
+      "ref": "C2",
+      "pad": "2",
+      "net": "RETURN",
+      "layer": "F.Cu"
+    }
+  },
+  "source": {
+    "positive": "src_p",
+    "negative": "src_n",
+    "voltage_v": 3.3,
+    "resistance_ohm": 0.01,
+    "inductance_h": 2e-08
+  },
+  "loads": {
+    "load1": {
+      "positive": "load1_p",
+      "negative": "load1_n",
+      "current_a": 1.2,
+      "inductance_h": 1e-09
+    },
+    "load2": {
+      "positive": "load2_p",
+      "negative": "load2_n",
+      "current_a": 0.8,
+      "inductance_h": 1e-09
+    }
+  },
+  "populations": {
+    "baseline": [
+      {
+        "ref": "C1",
+        "positive": "cap1_p",
+        "negative": "cap1_n",
+        "capacitance_f": 1e-05,
+        "esr_ohm": 0.02,
+        "esl_h": 1e-09,
+        "mounting_inductance_h": 2e-09
+      }
+    ],
+    "alternative": [
+      {
+        "ref": "C1",
+        "positive": "cap1_p",
+        "negative": "cap1_n",
+        "capacitance_f": 1e-05,
+        "esr_ohm": 0.02,
+        "esl_h": 1e-09,
+        "mounting_inductance_h": 2e-09
+      },
+      {
+        "ref": "C2",
+        "positive": "cap2_p",
+        "negative": "cap2_n",
+        "capacitance_f": 1e-06,
+        "esr_ohm": 0.04,
+        "esl_h": 5e-10,
+        "mounting_inductance_h": 2e-09
+      }
+    ]
+  },
+  "baseline_population": "baseline",
+  "geometry": {
+    "plating_mm": 0.025
+  },
+  "mesh": {
+    "size_mm": 1.5,
+    "scale": 1,
+    "chord_mm": 0.01
+  },
+  "materials": {
+    "copper": {
+      "k_w_mk": [
+        400,
+        400,
+        400
+      ],
+      "density_kg_m3": 8960,
+      "resistivity_ohm_m": 1.724e-08,
+      "reference_temperature_c": 20,
+      "temperature_coefficient_per_k": 0.00393,
+      "maximum_temperature_c": 130
+    },
+    "dielectric": {
+      "k_w_mk": [
+        0.8,
+        0.8,
+        0.3
+      ],
+      "density_kg_m3": 1850
+    },
+    "soldermask": {
+      "k_w_mk": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "density_kg_m3": 1200
+    }
+  },
+  "cooling": {
+    "kind": "convection",
+    "ambient_c": 25,
+    "h_w_m2k": 10
+  },
+  "model_frequency_range_hz": [
+    1,
+    10000000.0
+  ],
+  "ac": {
+    "start_hz": 10,
+    "stop_hz": 10000000.0,
+    "points_per_decade": 30
+  },
+  "transient": {
+    "kind": "pulse",
+    "load": "load1",
+    "delta_a": 0.4,
+    "delay_s": 2e-05,
+    "rise_s": 1e-06,
+    "width_s": 0.0001,
+    "fall_s": 1e-06,
+    "stop_s": 0.00025,
+    "step_s": 1e-07
+  },
+  "target_impedance": {
+    "allowed_dynamic_v": 0.1,
+    "delta_current_a": 0.4
+  },
+  "limits": {
+    "minimum_load_v": 3.0,
+    "maximum_load_v": 3.6,
+    "maximum_droop_v": 0.1,
+    "maximum_overshoot_v": 0.1,
+    "settling_band_v": 0.002,
+    "settling_s": 5e-05
+  },
+  "numerics": {
+    "solver_timeout_s": 120
+  },
+  "assumptions": [
+    "Synthetic geometry, materials and parasitics; not a hardware design.",
+    "Only copper Joule heating is modeled; source and load devices are external.",
+    "Inductance and capacitor models are explicit circuit assumptions, not field extraction."
+  ]
+}
